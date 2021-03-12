@@ -10,7 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using Backend.Models;
 
 namespace Backend
 {
@@ -27,6 +29,12 @@ namespace Backend
         public void ConfigureServices(IServiceCollection services)
         {
 
+            // requires using Microsoft.Extensions.Options
+            services.Configure<ListingDatabaseSettings>(
+                Configuration.GetSection(nameof(ListingDatabaseSettings)));
+
+            services.AddSingleton<IListingDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<ListingDatabaseSettings>>().Value);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
