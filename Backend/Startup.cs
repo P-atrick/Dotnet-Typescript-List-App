@@ -30,6 +30,13 @@ namespace Backend
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
+
             // requires using Microsoft.Extensions.Options
             services.Configure<ListingDatabaseSettings>(
                 Configuration.GetSection(nameof(ListingDatabaseSettings)));
@@ -54,6 +61,8 @@ namespace Backend
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Backend v1"));
             }
+
+            app.UseCors("CorsPolicy");
 
             app.UseHttpsRedirection();
 
