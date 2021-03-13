@@ -20,6 +20,9 @@ namespace Backend.Services
     public List<Listing> Get() =>
       _listings.Find(listing => true).ToList();
 
+    public Listing Get(string id) =>
+      _listings.Find<Listing>(listing => listing.Id == id).FirstOrDefault();
+
     public Listing Create(Listing listing)
     {
       _listings.InsertOne(listing);
