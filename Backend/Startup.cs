@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Backend.Models;
+using Backend.Services;
 
 namespace Backend
 {
@@ -35,6 +36,8 @@ namespace Backend
 
             services.AddSingleton<IListingDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<ListingDatabaseSettings>>().Value);
+
+            services.AddSingleton<ListingService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
