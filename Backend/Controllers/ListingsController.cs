@@ -37,5 +37,29 @@ namespace Backend.Controllers
       _listingService.Create(listing);
       return CreatedAtRoute("GetListing", new { id = listing.Id.ToString() }, listing);
     }
+
+    [HttpPut("{id:length(24)}")]
+    public IActionResult Update(string id, Listing listingIn)
+    {
+      var listing = _listingService.Get(id);
+      if (listing == null)
+      {
+        return NotFound();
+      }
+      _listingService.Update(id, listingIn);
+      return NoContent();
+    }
+
+    [HttpDelete("{id:length(24)}")]
+    public IActionResult Delete(string id)
+    {
+      var listing = _listingService.Get(id);
+      if (listing == null)
+      {
+        return NotFound();
+      }
+      _listingService.Remove(id);
+      return NoContent();
+    }
   }
 }

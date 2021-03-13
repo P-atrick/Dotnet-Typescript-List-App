@@ -28,5 +28,11 @@ namespace Backend.Services
       _listings.InsertOne(listing);
       return listing;
     }
+
+    public void Update(string id, Listing listingIn) =>
+      _listings.ReplaceOne(listing => listing.Id == id, listingIn);
+
+    public void Remove(string id) =>
+      _listings.DeleteOne(listing => listing.Id == id);
   }
 }
