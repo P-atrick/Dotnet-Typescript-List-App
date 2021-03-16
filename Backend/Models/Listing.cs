@@ -9,6 +9,8 @@ namespace Backend.Models
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get;set; }
 
+    [BsonElement("Status")]
+    public string Status { get;set; }
     [BsonElement("Company")]
     public string Company { get;set; }
     [BsonElement("Title")]
