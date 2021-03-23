@@ -23,15 +23,16 @@ const Home = () => {
 
   return (
     <div>
-      Home
-      {
-        listings && listings.map((listing: Listing) => {
-          return (
-            <CardComponent listing={listing} />
-          )
+      <div className="cardColumn">
+        {
+          listings && listings.map((listing: Listing) => {
+            return (
+              <CardComponent listing={listing} />
+            )
+          }
+        )
         }
-      )
-      }
+      </div>
       <ListingForm />
     </div>
   )

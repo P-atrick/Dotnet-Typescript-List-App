@@ -1,0 +1,18 @@
+.cardColumn {
+  background-color: #e5e5e5;
+  padding: .5em;
+
+  .card {
+    margin: 5px 0;
+    max-width: 200px;
+    min-height: 100px;
+
+    span {
+      display: block;
+    }
+
+    button {
+      cursor: pointer;
+    }
+  }
+}
