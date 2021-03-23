@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import CardComponent from './CardComponent';
+import ListingForm from './ListingForm';
 
 export interface Listing {
   id: string
@@ -31,6 +32,7 @@ const Home = () => {
         }
       )
       }
+      <ListingForm />
     </div>
   )
 }
